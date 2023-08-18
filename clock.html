@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+    background:black;
+    color: pink;
+}
+    h1{
+       text-align: center;
+       font-size: 110px;
+       text-decoration-line: underline;
+       text-decoration-style: solid;
+      }
+    #clock {
+        font-size: 155px;
+        width: 900px;
+        margin: 190px;
+        text-align: center;
+        border-radius: 20px;
+        border-style: solid;
+        border-color: pink;
+    }
+</style>
+<body>
+    <h1>Digital <span writing-mode: vertical-rl;>Clock</span></h1>
+    <div id="clock"></div>
+    <script>
+        let clock=document.querySelector("#clock");
+        function Time(){
+            let time=new Date();
+           // console.log(time)
+           let hours=time.getHours();
+           let min=time.getMinutes();
+           let sec=time.getSeconds();
+           let am_pm="AM";
+          if(hours>12){
+            hours=hours-12;
+            am_pm="PM";
+          }
+          if(hours==0){
+            hours=12;
+            am_pm="AM";
+          }
+          hours=hours<10 ? "0"+ hours:hours;
+          min=min<10 ? "0"+ min:min;
+          sec=sec<10 ? "0"+ sec:sec;
+          let currenttime=hours+":"+min+":"+sec+" "+am_pm
+          clock.innerText=currenttime;
+        }
+    Time();
+    setInterval(Time,1000);
+    </script> 
+</body>
+</html>
